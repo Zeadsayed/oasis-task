@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from 'src/app/shared/models/product';
 import { ProductsService } from 'src/app/shared/services/products.service';
 
@@ -8,24 +9,18 @@ import { ProductsService } from 'src/app/shared/services/products.service';
   styleUrls: ['./products-items.component.css']
 })
 export class ProductsItemsComponent implements OnInit {
-  @Input() data!:Product
+  @Input() data!: Product
 
   @Output() item = new EventEmitter();
-  addButton:boolean = false;
-  amount:number = 0
 
-  searchKey:string=''
+  amount: number = 0
 
-  constructor(private ProductsService: ProductsService) { }
+  constructor(private ProductsService: ProductsService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    // this.ProductsService.search.subscribe(val => {
-    //   this.searchKey = val
-    // })
-
   }
 
   add() {
-    this.item.emit({item:this.data, quantity:this.amount = 1 })
+    this.item.emit({ item: this.data, quantity: this.amount = 1 })
   }
 }

@@ -1,10 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" > <!-- *ngIf="isLogin" -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="this.auth.isTokenAvailabe">
   <div class="container-fluid px-5">
     <a class="navbar-brand fw-bold" routerLink="/products">Brand</a>
-
-    <input class="form-control d-md-block d-sm-none" type="text" placeholder="Search For Product!"
-    [(ngModel)]="searchTerm" (keyup)="search($event)">
-    <button class="btn btn-warning bt d-md-block d-sm-none">Search</button>
 
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 

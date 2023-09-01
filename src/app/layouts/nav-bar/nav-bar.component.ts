@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserAccess } from 'src/app/shared/models/iuser';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { Product } from 'src/app/shared/models/product';
 import { ProductsService } from 'src/app/shared/services/products.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,47 +12,30 @@ import { ProductsService } from 'src/app/shared/services/products.service';
 export class NavBarComponent {
   cartProducts: any[] = [];
   total: number = 0;
-  isLogin: boolean = false;
 
-  searchTerm: string = ''
   constructor(
-    private service: ProductsService,
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router,
-    private ActivatedRoute: ActivatedRoute,
-
+    private spinner: NgxSpinnerService
   ) { }
 
-  ngOnInit(): void {
-
-    // check if user login to show nav
-    this.auth.userData.subscribe(() => {
-      if (this.auth.userData.getValue() != null) {
-        this.isLogin = true;
-      } else {
-        this.isLogin = false;
-      }
-    })
-
-  }
+  ngOnInit(): void {}
 
   getCartProducts() {
+    this.spinner.show();
     if ("cart" in localStorage) {
       this.cartProducts = JSON.parse(localStorage.getItem("cart")!);
       this.total = this.cartProducts.length;
+    this.spinner.hide();
+
     }
   }
 
   logout() {
+    this.spinner.show();
     this.auth.logout();
     this.router.navigate(['login']);
+    this.spinner.hide();
   }
 
-  search(event:any){
-    this.searchTerm = (event.target as HTMLInputElement).value;
-    console.log(this.searchTerm);
-    this.service.search.next(this.searchTerm);
-
-
-  }
 }

@@ -3,7 +3,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser } from '../models/iuser';
 import { HttpClient } from '@angular/common/http';
 
-import { JwtHelperService } from "@auth0/angular-jwt";
 import { environment } from 'src/environments/environment.development';
 import jwtDecode from 'jwt-decode';
 import { localStorageKeys } from '../models/localStorageKeys';
@@ -13,7 +12,6 @@ import { localStorageKeys } from '../models/localStorageKeys';
 })
 export class AuthService {
   private readonly env: string = environment.baseApi;
-  jwtHelper = new JwtHelperService();
   userData = new BehaviorSubject(null);
   constructor(private http: HttpClient) { }
 
@@ -34,24 +32,9 @@ export class AuthService {
     return !!localStorage.getItem(localStorageKeys.JWT);
   }
 
-  get decodeToken(): any {
-    return this.jwtHelper.decodeToken(
-      localStorage.getItem(localStorageKeys.JWT)!
-    )!;
-  }
-
-  getUser(): any {
-    return this.decodeToken;
-  }
-
   saveUser(){
     let decodeuser = JSON.stringify(localStorage.getItem(localStorageKeys.JWT))
     this.userData.next(jwtDecode(decodeuser))
-  }
-
-  public isLoggedIn()
-  {
-    return localStorage.getItem(localStorageKeys.JWT) ;
   }
 
 }

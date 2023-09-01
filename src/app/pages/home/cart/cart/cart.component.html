@@ -1,3 +1,7 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-loader" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
 <div class="col-md-12 text-center my-3" *ngIf="!cartProducts.length">
   <img src="assets/images/cart/download2.jpg" class="">
 
@@ -80,7 +84,7 @@
 
       <div class="col-md-12 text-end">
        <span class="fw-bold grand">Grand Total : {{total | number:'1.1-1'}} $</span>
-       <button class="btn btn-success mx-5" (click)="addCart()">Check Out Now</button>
+       <button class="btn btn-success mx-5" (click)="CheckOut()">Check Out Now</button>
        <span class="or my-3 d-block">OR</span>
        <a routerLink="/products" class="text-decoration-none cont">
         <i class="fa-sharp fa-solid fa-backward"></i> continue shopping

@@ -17,6 +17,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 		ReactiveFormsModule,
     FormsModule,
     NgxSpinnerModule
+
   ]
 })
 export class AuthModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { MessagesService } from 'src/app/shared/services/messages.service';
 
@@ -7,12 +8,13 @@ import { MessagesService } from 'src/app/shared/services/messages.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements OnInit {
 
   constructor(
     private CartService: CartService,
     public message: MessagesService,
-    ) { }
+    private spinner: NgxSpinnerService
+  ) { }
 
   cartProducts: any[] = [];
 
@@ -24,22 +26,12 @@ export class CartComponent implements OnInit{
   }
 
   getCartProducts() {
+    this.spinner.show();
     if ("cart" in localStorage) {
       this.cartProducts = JSON.parse(localStorage.getItem("cart")!)
     }
+    this.spinner.hide();
     this.getCartTotal()
-  }
-
-  addAmount(index: number) {
-    this.cartProducts[index].quantity++
-    this.getCartTotal()
-    localStorage.setItem("cart", JSON.stringify(this.cartProducts))
-  }
-
-  minsAmount(index: number) {
-    this.cartProducts[index].quantity--
-    this.getCartTotal()
-    localStorage.setItem("cart", JSON.stringify(this.cartProducts))
   }
 
   // detectChange in input
@@ -55,9 +47,9 @@ export class CartComponent implements OnInit{
   }
 
   clearCart() {
-    if(this.cartProducts.length == 0){
+    if (this.cartProducts.length == 0) {
       this.message.toast("No Products In Your Cart", "error");
-    }else{
+    } else {
       this.cartProducts = []
       this.getCartTotal()
       localStorage.setItem("cart", JSON.stringify(this.cartProducts))
@@ -72,7 +64,8 @@ export class CartComponent implements OnInit{
     }
   }
 
-  addCart() {
+  CheckOut() {
+    this.spinner.show();
     let products = this.cartProducts.map(item => {
       return {
         productId: item.item.id,
@@ -85,14 +78,14 @@ export class CartComponent implements OnInit{
       products: products
     }
     this.CartService.addCart(Model).subscribe(res => {
+      this.spinner.hide();
       if (products.length == 0) {
-
         this.message.toast("No Products In Your Cart", "error");
       }
       else {
+        this.spinner.hide();
         this.message.popup("Well done! Your Order is Successfully Send", "success method");
         this.clearCart()
-
       }
     })
   }

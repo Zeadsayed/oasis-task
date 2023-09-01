@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from 'src/app/shared/models/product';
 import { MessagesService } from 'src/app/shared/services/messages.service';
 import { ProductsService } from 'src/app/shared/services/products.service';
@@ -19,20 +20,20 @@ export class ProductsComponent implements OnInit {
   constructor(
     public ProductsService: ProductsService,
     public message: MessagesService,
+    private spinner: NgxSpinnerService
+
   ) { }
 
   ngOnInit(): void {
     this.getProducts()
     this.getCategories()
-
-    this.ProductsService.search.subscribe((val)=>{
-      this.searchKey = val;
-    })
   }
 
   getProducts() {
+    this.spinner.show();
     this.ProductsService.getAllProducts().subscribe((res: any) => {
       this.products = res
+      this.spinner.hide();
     })
   }
 
@@ -47,12 +48,14 @@ export class ProductsComponent implements OnInit {
     if (value == "all") {
       this.getProducts();
     } else {
-      this.getProductsCategory(value)
+      this.getProductsCategory(value);
     }
   }
 
   getProductsCategory(keyword: string) {
+    this.spinner.show();
     this.ProductsService.getProductsByCategory(keyword).subscribe((res: any) => {
+      this.spinner.hide();
       this.products = res
     })
   }

@@ -8,7 +8,8 @@ import { CartComponent } from './cart/cart/cart.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgxSpinnerModule,
+
   ]
 })
 export class HomeModule { }
