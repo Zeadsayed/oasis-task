@@ -1,0 +1,17 @@
+<div class="item rounded-2 mb-4" style="width: 23rem;">
+
+  <div class="head" routerLink="/product-details/{{data.id}}">
+    <div class="img text-center">
+      <img src="{{data.image}}" class="card-img-top text-center" alt="...">
+
+    </div>
+    <div class="card-body my-1">
+      <h5 class="card-title mb-1 p-2 text-white d-flex justify-content-center align-items-center">{{data.title}}</h5>
+      <p class="card-text text-start">{{data.description}}</p>
+    </div>
+  </div>
+  <div class="card-footer d-flex justify-content-between p-2">
+    <a (click)="add()" class="btn btn-primary">Add To Cart</a>
+    <span class="bg-danger p-2 text-white rounded-5">{{data.price | currency}} </span>
+  </div>
+</div>

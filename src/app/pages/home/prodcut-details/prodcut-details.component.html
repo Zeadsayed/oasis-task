@@ -1,0 +1,27 @@
+<div class="container box m-4 w-100 mx-auto p-2 mt-5">
+  <div class="row">
+    <div class="col-lg-5 col-md-12 col-sm-12 my-4 mx-auto ">
+      <img src="{{data.image}}" class="w-100" alt="sas">
+    </div>
+
+    <div class="col-lg-6 col-md-12 col-sm-12 mt-3 ">
+      <h2 class="">{{data.title}} </h2>
+      <hr class="border border-dark ">
+
+      <h4><span>Category :</span> {{data.category}}</h4>
+      <hr class="border border-dark ">
+
+      <h4><span>Description :</span> {{data.description}}</h4>
+      <hr class="border border-dark ">
+
+      <h4><span>Rate : </span><i class='fas fa-star text-warning fa-xs'></i> {{data.rating.rate}}</h4>
+      <hr class="border border-dark ">
+
+      <h4><span>Count :</span> {{data.rating.count}}</h4>
+      <hr class="border border-dark ">
+
+      <h4><span>Price :</span> {{data.price | currency}}</h4>
+
+    </div>
+  </div>
+</div>

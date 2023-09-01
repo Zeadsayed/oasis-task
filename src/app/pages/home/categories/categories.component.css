@@ -1,0 +1,18 @@
+label{
+  font-size: 25px;
+  font-weight: bold;
+  color: #0b6295;
+}
+
+option{
+  font-weight: 500;
+  color: #fff;
+  /* font-size: 20px; */
+}
+
+.form-control{
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 18px;
+  background-color: #0b6295;
+}

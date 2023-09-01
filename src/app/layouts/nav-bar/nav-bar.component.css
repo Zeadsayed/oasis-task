@@ -1,0 +1,41 @@
+.navbar {
+  background: linear-gradient(to right, #0b6295, #062744);
+}
+
+.navbar-brand {
+  font-size: 35px;
+  color: #fff;
+}
+
+.navbar .nav-link {
+  font-size: 20px;
+  color: #fff;
+}
+
+.nav-item .badge {
+  font-size: 10px;
+}
+
+.form-control{
+  border-radius: 10rem 0 0 10rem;
+  border: none;
+  height: 2rem;
+  width: 15rem;
+  background-color: #f1f1f1;
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  margin-left: 20px;
+}
+
+.bt{
+  height: 2rem;
+  width: 5rem;
+  font-size: 15px;
+  border-radius: 0 10rem 10rem 0;
+  border: none;
+  /* opacity: 0.8; */
+  outline: none;
+  transition: all 0.5s;
+}

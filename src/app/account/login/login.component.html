@@ -1,0 +1,72 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.4)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: #000"> Loading... </p>
+</ngx-spinner>
+
+
+<div class="auth-page">
+  <div class="container-fluid p-0">
+    <div class="row g-0">
+      <div class="col-xxl-3 col-lg-4 col-md-5">
+        <div class="auth-full-page-content d-flex p-sm-5 p-4">
+          <div class="w-100">
+            <div class="d-flex flex-column h-100">
+              <div class="text-center my-5">
+                <h3 class="mb-0">Welcome Back To Shop !</h3>
+                <p class="text-muted mt-2 fw-medium">Log in to your account and start your adventure.</p>
+
+                <h4 class="mt-5 log">Login</h4>
+              </div>
+              <div class="auth-content">
+                <form [formGroup]="loginForm">
+
+                  <div class="mb-3">
+                    <label class="form-label fw-medium" for="username">username : mor_2314</label>
+                    <input type="username" class="form-control" id="username" formControlName="username"
+                      [ngClass]="{ 'is-invalid': f.username?.touched && f.username?.errors }"
+                      placeholder="Enter username">
+                    <div *ngIf="f.username?.touched && f.username?.errors" class="invalid-feedback">
+                      <div *ngIf="f.username?.invalid">User Name is required</div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-medium" for="userpassword">Password : 83r5^_</label>
+                    <div class="input-group auth-pass-inputgroup">
+                      <input [type]="fieldTextType ? 'text' : 'password'" class="form-control pe-5"
+                        placeholder="Enter password" id="password-input" formControlName="password"
+                        [ngClass]="{ 'is-invalid': f.password?.touched && f.password?.errors }">
+                      <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-color"
+                        type="button" id="password-addon"><i class="mdi align-middle"
+                          [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType}"
+                          (click)="toggleFieldTextType()"></i></button>
+                      <div *ngIf="f.password?.touched && f.password?.errors" class="invalid-feedback">
+                        <span *ngIf="f.password?.invalid">Password is required</span>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="mt-5 d-grid">
+                    <button class="btn btn-primary btn-block mb-3" type="submit" (click)="onSubmit(loginForm)">Log In</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end auth full page content -->
+      </div>
+
+      <div class="col-xxl-9 col-lg-8 col-md-7">
+        <div class="auth-bg pt-md-5 p-4">
+          <div class="bg-overlay"></div>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end container fluid -->
+</div>

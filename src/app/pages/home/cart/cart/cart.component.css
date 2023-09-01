@@ -1,0 +1,38 @@
+h1{
+  color: #0b6295;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.clear:hover{
+  color: #fff !important;
+}
+
+.btn-success,.btn-primary{
+  background-color: #0b6295;
+  border: none;
+}
+.btn-success:hover , .btn-primary:hover{
+  background-color: #0a486d;
+}
+
+.cont{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.or{
+  font-size: 18px;
+  margin-right: 90px;
+  font-weight: 700;
+}
+
+.grand{
+  font-size: 20px;
+}

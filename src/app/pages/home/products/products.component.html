@@ -1,0 +1,51 @@
+<div class="container">
+  <!-- carousel -->
+  <!-- <div class="row my-5 vh-100 align-items-center">
+    <div class="col-md-12">
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner text-center">
+          <div class="carousel-item active">
+            <div class="slider-contain">
+              <div>
+                <h4>welcome to fashion</h4>
+                <h1>men fashion</h1><a class="btn btn-solid" href="">Shop Now </a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="slider-contain">
+              <div>
+                <h4>welcome to fashion</h4>
+                <h1>women fashion</h1><a class="btn btn-solid" href="">Shop Now </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+  <!-- End carousel -->
+
+  <div class="row d-flex justify-content-center text-center  my-4">
+    <div class="col-md-12 w-50">
+      <!-- <app-search-bar></app-search-bar> -->
+      <app-categories [data]="categories" [title]="'Categories'" (selectedValue)="filterCategory($event)" ></app-categories>
+    </div>
+  </div>
+
+  <div class="row text-center my-4">
+    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of products">
+      <app-products-items [data]="item" (item)="addToCart($event)"></app-products-items>
+    </div>
+  </div>
+
+
+</div>
